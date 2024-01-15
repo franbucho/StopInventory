@@ -1,38 +1,71 @@
 import json
 import os
+import tkinter as tk
+from tkinter import messagebox
 
-def registrar_usuario(username, password):
+def registrar_usuario():
+    username = entry_username.get()
+    password = entry_password.get()
+
     # Verificar si el usuario ya existe
-    if os.path.exists("usuarios.json"):
-        with open("usuarios.json", "r") as file:
-            usuarios = json.load(file)
-            if username in usuarios:
-                print("¡El usuario ya existe!")
-                return False
+    usuarios = cargar_usuarios()
+    if username in usuarios:
+        messagebox.showinfo("Registro", "¡El usuario ya existe!")
+        return
 
     # Registrar nuevo usuario
-    with open("usuarios.json", "a+") as file:
-        usuarios = json.load(file) if os.path.exists("usuarios.json") else {}
-        usuarios[username] = {"password": password}
-        file.seek(0)
-        json.dump(usuarios, file)
-        print("¡Registro exitoso!")
-        return True
+    usuarios[username] = {"password": password}
+    guardar_usuarios(usuarios)
+    messagebox.showinfo("Registro", "¡Registro exitoso!")
 
-def autenticar_usuario(username, password):
+def autenticar_usuario():
+    username = entry_username.get()
+    password = entry_password.get()
+
     # Verificar si el usuario existe
+    usuarios = cargar_usuarios()
+    if username in usuarios and usuarios[username]["password"] == password:
+        messagebox.showinfo("Autenticación", "¡Autenticación exitosa!")
+        return
+
+    messagebox.showinfo("Autenticación", "¡Error de autenticación!")
+
+def cargar_usuarios():
     if os.path.exists("usuarios.json"):
         with open("usuarios.json", "r") as file:
-            usuarios = json.load(file)
-            if username in usuarios and usuarios[username]["password"] == password:
-                print("¡Autenticación exitosa!")
-                return True
+            try:
+                return json.load(file)
+            except json.JSONDecodeError:
+                return {}
+    return {}
 
-    print("¡Error de autenticación!")
-    return False
+def guardar_usuarios(usuarios):
+    with open("usuarios.json", "w") as file:
+        json.dump(usuarios, file)
 
-# Ejemplo de registro de usuario
-registrar_usuario("usuario1", "contrasena123")
+# Crear la interfaz gráfica
+root = tk.Tk()
+root.title("Registro y Autenticación de Usuarios")
 
-# Ejemplo de autenticación de usuario
-autenticar_usuario("usuario1", "contrasena123")
+# Etiquetas y campos de entrada
+label_username = tk.Label(root, text="Usuario:")
+label_username.pack()
+
+entry_username = tk.Entry(root)
+entry_username.pack()
+
+label_password = tk.Label(root, text="Contraseña:")
+label_password.pack()
+
+entry_password = tk.Entry(root, show="*")
+entry_password.pack()
+
+# Botones de registro y autenticación
+button_register = tk.Button(root, text="Registrar", command=registrar_usuario)
+button_register.pack()
+
+button_authenticate = tk.Button(root, text="Autenticar", command=autenticar_usuario)
+button_authenticate.pack()
+
+# Ejecutar la interfaz
+root.mainloop()
