@@ -1,59 +1,37 @@
-**README.md:**
+Funcionalidades
+Agregar Producto: Ingresa el nombre del producto y la cantidad, luego haz clic en "Agregar" para añadirlo al inventario.
 
-# User Registration and Authentication System
+Sacar Producto: Ingresa el nombre del producto y la cantidad, luego haz clic en "Sacar" para restar la cantidad del inventario.
 
-Este es un sistema simple de registro y autenticación de usuarios desarrollado en Python con una interfaz gráfica utilizando la biblioteca `tkinter`. Permite a los usuarios registrarse, almacenar sus credenciales de usuario y autenticarse posteriormente.
+Generar Reporte: Haz clic en "Generar Reporte" para ver el inventario actual en la ventana de la interfaz gráfica.
+
+Productos en Stop: La ventana muestra los productos que tienen una cantidad igual a cero.
+
+Estructura del Código
+nombre_del_archivo.py: Contiene la clase principal InventarioApp y la configuración de la interfaz gráfica.
+
+inventario.py: Contiene la clase Inventario que gestiona las operaciones del inventario.
+
+Contribuciones
+Si encuentras algún problema, tienes sugerencias de mejoras o deseas contribuir, ¡siéntete libre de abrir un issue o enviar un pull request!
+
+Licencia
+Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para obtener más detalles.
+
+
+# Gestión de Inventario con Interfaz Gráfica (Python + Tkinter)
+
+Este proyecto es una aplicación simple de gestión de inventario implementada en Python utilizando la biblioteca Tkinter para la interfaz gráfica. La aplicación permite agregar y sacar productos del inventario, generar informes y visualizar productos en stop.
 
 ## Requisitos
 
-Asegúrate de tener Python instalado en tu sistema. Puedes descargar Python desde [python.org](https://www.python.org/downloads/).
+Asegúrate de tener Python instalado en tu sistema. Puedes descargarlo desde [python.org](https://www.python.org/downloads/).
 
-## Instalación
+## Configuración y Ejecución
 
-1. Descarga o clona este repositorio.
-
-```bash
-git clone https://github.com/tu_usuario/tu_repositorio.git
-cd tu_repositorio
-```
-
-2. Ejecuta el script principal:
+1. Clona el repositorio o descarga el código fuente.
+2. Abre una terminal y navega al directorio del proyecto.
+3. Ejecuta el siguiente comando para iniciar la aplicación:
 
 ```bash
-python main.py
-```
-
-3. Se abrirá una interfaz gráfica donde puedes registrar nuevos usuarios y autenticarte.
-
-## Uso
-
-- **Registro de Usuario:** Ingresa un nombre de usuario y una contraseña en los campos correspondientes y presiona el botón "Registrar".
-- **Autenticación de Usuario:** Ingresa un nombre de usuario y una contraseña en los campos correspondientes y presiona el botón "Autenticar".
-
-## Licencia
-
-Este proyecto está bajo la Licencia MIT - consulta el archivo [LICENSE](LICENSE) para más detalles.
-
-```
-MIT License
-
-Copyright (c) 2024 Francisco Villahermosa @franbucho
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-...`
+python nombre_del_archivo.py
